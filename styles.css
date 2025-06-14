@@ -1,23 +1,23 @@
 /* Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #f4f7f6;
+  font-family: "Luckiest Guy", serif;
+  background: #719c8e;
+  overflow-x: hidden;
   color: #333;
   display: flex;
   flex-direction: column;
+  -webkit-font-smoothing: antialiased;
   min-height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
 header {
   background: #2c3e50;
   color: white;
-  padding: 20px 0;
+  padding: 15px 0;
   text-align: center;
   font-size: 2rem;
   font-weight: bold;
@@ -27,14 +27,13 @@ header {
 main {
   flex: 1;
   max-width: 900px;
-  margin: 40px auto;
-  padding: 0 20px;
+  margin: 20px auto;
+  padding: 0 15px;
 }
 
 h1 {
-  margin-bottom: 20px;
   text-align: center;
-
+  margin: 20px 0;
 }
 
 p {
@@ -42,23 +41,38 @@ p {
   font-size: 1.1rem;
   color: #555;
   text-align: center;
-
+  margin: 10px 0;
 }
 
 footer {
   background: #2c3e50;
   color: white;
   text-align: center;
-  padding: 15px 0;
+  padding: 10px 0;
   font-size: 0.9rem;
 }
 
 div {
-    
-
-  margin-bottom: 20px;
+  margin: 10px auto;
   text-align: center;
-  
 }
 
-
+h1 span {
+  position: relative;
+  top: 20px;
+  display: inline-block;
+  font-size: 80xp;
+  color: #fff;
+  text-shadow: 0 1px 0 #ccc, 0 2px 0 #ccc, 0 3px 0 #ccc,  0 4px 0 #ccc,
+  0 5px 0 #ccc,  0 6px 0 transparent,  0 7px 0 transparent,  0 8px 0 transparent,
+  0 9px 0 transparent,  0 10px 10px rgba(0, 0, 0, 0.4); 
+  animation: bounce 0.3s ease infinite alternate;
+}
+@keyframes bounce {
+  100% {
+    top: -20px;
+    text-shadow: 0 1px 0 #ccc, 0 2px 0 #ccc, 0 3px 0 #ccc,
+    0 4px 0 #ccc, 0 5px 0 #ccc, 0 6px 0 #ccc,
+    0 7px 0 #ccc, 0 8px 0 #ccc, 0 9px 0 #ccc, 0 50px 25px rgba(0, 0, 0, 0.2);
+  }
+}
