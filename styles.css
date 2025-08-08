@@ -6,9 +6,10 @@ body {
     background-color: #000;
     color: #e4ffe4;
     overflow-x: hidden;
+    position: relative;
 }
 
-/* Vihreät liekit taustalla */
+/* CSS-animoidut vihreät liekit */
 body::before {
     content: "";
     position: fixed;
@@ -16,12 +17,23 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('https://i.imgur.com/2JfK4bT.gif') center/cover no-repeat; /* vihreä liekki gif */
-    opacity: 0.25;
+    background: radial-gradient(circle, rgba(0,255,0,0.3) 0%, rgba(0,0,0,0) 70%);
+    animation: flames 3s infinite ease-in-out;
     z-index: -1;
 }
 
-/* Yläosa */
+@keyframes flames {
+    0%, 100% {
+        transform: scale(1) translateY(0);
+        opacity: 0.25;
+    }
+    50% {
+        transform: scale(1.2) translateY(-10px);
+        opacity: 0.4;
+    }
+}
+
+/* Header */
 header {
     background-color: rgba(13, 47, 13, 0.8);
     padding: 20px;
@@ -62,20 +74,13 @@ nav a:hover {
     color: #000;
 }
 
-/* Sisältö */
-main {
-    padding: 20px;
-    max-width: 900px;
-    margin: auto;
-}
-
-/* Pääsivun laatikot */
+/* Linkkilaatikot */
 .link-boxes {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
-    margin-top: 30px;
+    margin-top: 40px;
 }
 
 .link-box {
@@ -99,7 +104,7 @@ main {
     font-size: 14px;
 }
 
-/* Alatunniste */
+/* Footer */
 footer {
     text-align: center;
     padding: 15px;
