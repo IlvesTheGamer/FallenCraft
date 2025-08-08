@@ -1,78 +1,51 @@
-/* Reset */
-@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 body {
-  font-family: "Luckiest Guy", serif;
-  background: #719c8e;
-  overflow-x: hidden;
-  color: #333;
-  display: flex;
-  flex-direction: column;
-  -webkit-font-smoothing: antialiased;
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    font-family: 'Press Start 2P', cursive;
+    background-color: #111;
+    color: #d4ffd4;
 }
 
 header {
-  background: #2c3e50;
-  color: white;
-  padding: 15px 0;
-  text-align: center;
-  font-size: 2rem;
-  font-weight: bold;
-  letter-spacing: 2px;
+    background-color: #0d2f0d;
+    padding: 15px;
+    text-align: center;
+    border-bottom: 3px solid #0f0;
+}
+
+header img {
+    height: 50px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    background-color: #0b220b;
+    padding: 10px;
+}
+
+nav a {
+    color: #0f0;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #8f8;
 }
 
 main {
-  flex: 1;
-  max-width: 900px;
-  margin: 20px auto;
-  padding: 0 15px;
-}
-
-h1 {
-  text-align: center;
-  margin: 20px 0;
-}
-
-p {
-  line-height: 1.6;
-  font-size: 1.1rem;
-  color: #555;
-  text-align: center;
-  margin: 10px 0;
+    padding: 20px;
+    max-width: 900px;
+    margin: auto;
 }
 
 footer {
-  background: #2c3e50;
-  color: white;
-  text-align: center;
-  padding: 10px 0;
-  font-size: 0.9rem;
-}
-
-div {
-  margin: 10px auto;
-  text-align: center;
-}
-
-h1 span {
-  position: relative;
-  top: 20px;
-  display: inline-block;
-  font-size: 80xp;
-  color: #fff;
-  text-shadow: 0 1px 0 #ccc, 0 2px 0 #ccc, 0 3px 0 #ccc,  0 4px 0 #ccc,
-  0 5px 0 #ccc,  0 6px 0 transparent,  0 7px 0 transparent,  0 8px 0 transparent,
-  0 9px 0 transparent,  0 10px 10px rgba(0, 0, 0, 0.4); 
-  animation: bounce 0.3s ease infinite alternate;
-}
-@keyframes bounce {
-  100% {
-    top: -20px;
-    text-shadow: 0 1px 0 #ccc, 0 2px 0 #ccc, 0 3px 0 #ccc,
-    0 4px 0 #ccc, 0 5px 0 #ccc, 0 6px 0 #ccc,
-    0 7px 0 #ccc, 0 8px 0 #ccc, 0 9px 0 #ccc, 0 50px 25px rgba(0, 0, 0, 0.2);
-  }
+    text-align: center;
+    padding: 15px;
+    background-color: #0d2f0d;
+    border-top: 3px solid #0f0;
+    margin-top: 30px;
 }
