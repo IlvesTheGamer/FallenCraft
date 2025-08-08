@@ -1,153 +1,129 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-    <meta charset="UTF-8">
-    <title>Pääsivu - Minecraft & Discord</title>
-    <style>
-    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+<meta charset="UTF-8" />
+<title>Minecraft & Discord Palvelin</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
-    body {
-        margin: 0;
-        font-family: 'Press Start 2P', cursive;
-        background-color: #000;
-        color: #e4ffe4;
-        overflow-x: hidden;
-        position: relative;
-    }
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #121212;
+    color: #a6d785;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
 
-    /* Vihreät liekit taustalla */
-    body::before {
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: radial-gradient(circle, rgba(0,255,0,0.3) 0%, rgba(0,0,0,0) 70%);
-        animation: flames 3s infinite ease-in-out;
-        z-index: -1;
-    }
+  header {
+    background-color: #1f341f;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    border-bottom: 3px solid #a6d785;
+  }
 
-    @keyframes flames {
-        0%, 100% {
-            transform: scale(1) translateY(0);
-            opacity: 0.25;
-        }
-        50% {
-            transform: scale(1.2) translateY(-10px);
-            opacity: 0.4;
-        }
-    }
+  header img {
+    max-height: 50px;
+    margin-bottom: 0.5rem;
+  }
 
-    header {
-        background-color: rgba(13, 47, 13, 0.8);
-        padding: 20px;
-        text-align: center;
-        border-bottom: 4px solid #0f0;
-        box-shadow: 0 3px 6px rgba(0,0,0,0.4);
-    }
+  nav {
+    background-color: #1a2c1a;
+    padding: 0.75rem 0;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+  }
 
-    header img {
-        height: 60px;
-    }
+  nav a {
+    color: #a6d785;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
 
-    h1, h2, h3 {
-        color: #0f0;
-        text-shadow: 2px 2px #000;
-    }
+  nav a:hover {
+    background-color: #a6d785;
+    color: #121212;
+  }
 
-    nav {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        background-color: rgba(11, 34, 11, 0.8);
-        padding: 12px;
-    }
+  main {
+    flex-grow: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-    nav a {
-        color: #0f0;
-        text-decoration: none;
-        padding: 8px 16px;
-        background-color: rgba(6, 79, 6, 0.9);
-        border: 2px solid #0f0;
-        transition: all 0.2s ease;
-    }
+  .link-boxes {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
 
-    nav a:hover {
-        background-color: #0f0;
-        color: #000;
-    }
+  .link-box {
+    background-color: #223322;
+    border-radius: 8px;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 2px 8px rgba(166, 215, 133, 0.25);
+    min-width: 180px;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
 
-    .link-boxes {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
-        margin-top: 40px;
-    }
+  .link-box:hover {
+    background-color: #a6d785;
+    color: #121212;
+    cursor: pointer;
+    transform: scale(1.05);
+  }
 
-    .link-box {
-        background-color: rgba(0, 0, 0, 0.75);
-        border: 3px solid #0f0;
-        border-radius: 10px;
-        padding: 20px;
-        text-align: center;
-        width: 250px;
-        transition: transform 0.2s ease, background-color 0.3s ease;
-    }
+  .link-box a {
+    color: inherit;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    display: block;
+  }
 
-    .link-box:hover {
-        background-color: rgba(0, 255, 0, 0.2);
-        transform: scale(1.05);
-    }
+  footer {
+    text-align: center;
+    padding: 1rem 2rem;
+    background-color: #1f341f;
+    color: #a6d785;
+    border-top: 3px solid #a6d785;
+  }
 
-    .link-box a {
-        color: #0f0;
-        text-decoration: none;
-        font-size: 14px;
-    }
-
-    footer {
-        text-align: center;
-        padding: 15px;
-        background-color: rgba(13, 47, 13, 0.8);
-        border-top: 3px solid #0f0;
-        margin-top: 30px;
-        color: #88ff88;
-    }
-    </style>
+</style>
 </head>
 <body>
-    <header>
-        <img src="logo.png" alt="Palvelimen Logo">
-        <h1>Minecraft & Discord - Palvelin</h1>
-    </header>
+  <header>
+    <img src="logo.png" alt="Palvelimen logo" />
+    <h1>Minecraft & Discord Palvelin</h1>
+  </header>
 
-    <nav>
-        <a href="index.html">Pääsivu</a>
-        <a href="rules.html">Säännöt</a>
-        <a href="staff.html">Ylläpitäjät</a>
-    </nav>
+  <nav>
+    <a href="index.html">Pääsivu</a>
+    <a href="rules.html">Säännöt</a>
+    <a href="staff.html">Ylläpitäjät</a>
+  </nav>
 
-    <main>
-        <h2>Tervetuloa!</h2>
-        <p>Valitse alta mihin haluat siirtyä:</p>
+  <main>
+    <h2>Tervetuloa!</h2>
+    <p>Valitse alta mihin haluat siirtyä:</p>
 
-        <div class="link-boxes">
-            <div class="link-box">
-                <a href="rules.html">📜 Säännöt</a>
-            </div>
-            <div class="link-box">
-                <a href="staff.html">🛡️ Ylläpitäjät</a>
-            </div>
-            <div class="link-box">
-                <a href="https://discord.gg/oma-linkki" target="_blank">💬 Discord</a>
-            </div>
-        </div>
-    </main>
+    <div class="link-boxes">
+      <div class="link-box"><a href="rules.html">Säännöt</a></div>
+      <div class="link-box"><a href="staff.html">Ylläpitäjät</a></div>
+      <div class="link-box"><a href="https://discord.gg/oma-linkki" target="_blank" rel="noopener">Discord</a></div>
+    </div>
+  </main>
 
-    <footer>
-        &copy; 2025 Minecraft & Discord - Palvelin
-    </footer>
+  <footer>
+    &copy; 2025 Minecraft & Discord Palvelin
+  </footer>
 </body>
 </html>
