@@ -1,15 +1,16 @@
 <?php
 header('Content-Type: application/json');
 
-// Välimuistitiedosto
+// Välimuisti poistettu testiksi
+/*
 $cacheFile = __DIR__ . '/status_cache.json';
 $cacheTime = 60; // sekunteina
 
-// Jos välimuisti on olemassa ja alle minuutin vanha, käytä sitä
 if (file_exists($cacheFile) && (time() - filemtime($cacheFile) < $cacheTime)) {
     echo file_get_contents($cacheFile);
     exit;
 }
+*/
 
 // Palvelinlista
 $servers = [
@@ -20,20 +21,28 @@ $servers = [
 
 $result = [];
 foreach ($servers as $srv) {
-    $url = "https://api.mcsrvstat.us/2/{$srv['host']}:{$srv['port']}";
+    // Huom! Poistetaan portti URL:stä testiksi, koska API ei välttämättä käytä porttia
+    $url = "https://api.mcsrvstat.us/2/{$srv['host']}";
+    
     $data = @file_get_contents($url);
-    $json = $data ? json_decode($data, true) : null;
+    if ($data === false) {
+        error_log("API-haku epäonnistui palvelimelle: {$srv['host']}");
+        $json = null;
+    } else {
+        $json = json_decode($data, true);
+        error_log("API-data palvelimelta {$srv['host']}: " . print_r($json, true));
+    }
+    
     $result[] = [
         "name" => $srv['name'],
         "host" => $srv['host'],
         "port" => $srv['port'],
         "note" => $srv['note'],
         "online" => $json && !empty($json['online']),
-        "players" => $json['online'] ? $json['players']['online'] ?? 0 : 0,
-        "max" => $json['online'] ? $json['players']['max'] ?? 0 : 0
+        "players" => ($json && !empty($json['players']['online'])) ? $json['players']['online'] : 0,
+        "max" => ($json && !empty($json['players']['max'])) ? $json['players']['max'] : 0
     ];
 }
 
-// Tallenna välimuistiin
-file_put_contents($cacheFile, json_encode($result));
+// Tulostetaan JSON-vastaus
 echo json_encode($result);
