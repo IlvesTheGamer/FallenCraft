@@ -116,40 +116,39 @@
 </footer>
 
 <script>
-/*
-  Muokkaa tätä taulukkoa lisätäksesi/poistaaksesi palvelimia.
-  Käytä muotoa: { name: "Nimi näyttöön", host: "example.com", port: 25565, note: "vapaa teksti" }
-*/
 const SERVER_LIST = [
   { name: "Fallen Survival", host: "2fallencraft0.aternos.me", port: 12802, note: "Survival, PVP rajoitettu" },
   { name: "Fallen Prison", host: "23.27.139.44", port: 25929, note: "Grindaus, Tarina." },
   { name: "Fallen Events", host: "TULOSSAPIAN", port: 25567, note: "TULOSSA PIAN" }
 ];
 
-// API: https://api.mcsrvstat.us/2/{host}:{port}
-// Esim. https://api.mcsrvstat.us/2/play.example.com:25565
+// Tilalukko estämään päällekkäiset päivitykset
+let isRefreshing = false;
 
 function makeServerCard(srv){
   const wrap = document.createElement('div');
   wrap.className = 'server';
-  wrap.innerHTML = 
+  wrap.innerHTML = `
     <h3>${escapeHtml(srv.name)}</h3>
     <div class="meta">${escapeHtml(srv.host)}:${srv.port} • ${escapeHtml(srv.note || '')}</div>
     <div class="meta players">Pelaajat: <span class="playersCount">-</span></div>
     <div class="status statusTag offline">Tarkistetaan...</div>
-  ;
+  `;
   return wrap;
 }
 
-function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c])); }
+function escapeHtml(s){ 
+  return String(s).replace(/[&<>"']/g, c=>({ 
+    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' 
+  }[c])); 
+}
 
 async function checkServer(srv, card){
   const statusTag = card.querySelector('.statusTag');
   const playersEl = card.querySelector('.playersCount');
-  const apiURL = https://api.mcsrvstat.us/2/${encodeURIComponent(srv.host)}:${encodeURIComponent(srv.port)};
+  const apiURL = `https://api.mcsrvstat.us/2/${encodeURIComponent(srv.host)}:${encodeURIComponent(srv.port)}`;
 
   try{
-    // Asetetaan väliaikainen teksti
     statusTag.textContent = 'Tarkistetaan...';
     statusTag.classList.remove('online','offline');
 
@@ -160,10 +159,9 @@ async function checkServer(srv, card){
     if(data && data.online){
       statusTag.textContent = 'ONLINE';
       statusTag.classList.remove('offline'); statusTag.classList.add('online');
-      // pelaajat ja max
       const players = data.players && (data.players.online ?? data.players) ? (data.players.online ?? data.players) : 0;
       const max = data.players && data.players.max ? data.players.max : (data.players ? data.players : '-');
-      playersEl.textContent = ${players} / ${max};
+      playersEl.textContent = `${players} / ${max}`;
     } else {
       statusTag.textContent = 'OFFLINE';
       statusTag.classList.remove('online'); statusTag.classList.add('offline');
@@ -173,25 +171,33 @@ async function checkServer(srv, card){
     statusTag.textContent = 'OFFLINE';
     statusTag.classList.remove('online'); statusTag.classList.add('offline');
     playersEl.textContent = '-';
-    // console.warn('Server check failed for', srv.host, err);
   }
 }
 
-function renderServers(){
+async function renderServers(){
+  if(isRefreshing) return; // älä tee mitään jos edellinen päivitys kesken
+  isRefreshing = true;
+
   const container = document.getElementById('serversGrid');
   container.innerHTML = '';
+  const checkPromises = [];
+
   SERVER_LIST.forEach(srv=>{
     const card = makeServerCard(srv);
     container.appendChild(card);
-    // käynnistä tarkistus
-    checkServer(srv, card);
+    checkPromises.push(checkServer(srv, card));
   });
+
+  // Odotetaan että kaikki pyynnöt valmistuvat
+  await Promise.allSettled(checkPromises);
+  isRefreshing = false;
 }
 
-// mahdollisuus periodiseen päivitykseen:
-const REFRESH_INTERVAL_MS = 60 * 1000; // 60s
+// Päivitetään kerran heti ja sitten automaattisesti 60s välein
+const REFRESH_INTERVAL_MS = 60 * 1000; 
 renderServers();
 setInterval(renderServers, REFRESH_INTERVAL_MS);
 </script>
+
 </body>
 </html>
