@@ -1,130 +1,203 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fi">
 <head>
-<meta charset="UTF-8" />
-<title>Minecraft & Discord Palvelin</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>FallenCraft — Minecraft & Discord Palvelin</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
-
-  body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    background-color: #121212;
-    color: #a6d785;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+  :root{
+    --bg-dark:#0f2417; /* header dark */
+    --panel-dark:#0e0e0e; /* main bg */
+    --accent:#8fc96a; /* light green */
+    --accent-dark:#6b8f4a;
+    --card:#18321f; /* card bg */
+    --muted:#bfe7a8;
+    --shadow: 0 12px 20px rgba(0,0,0,0.6);
+    font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   }
-
-  header {
-    background-color: #1f341f;
-    padding: 1.5rem 2rem;
-    text-align: center;
-    border-bottom: 3px solid #a6d785;
+  html,body{height:100%;margin:0;background:var(--panel-dark);color:var(--muted);}
+  header{
+    background:linear-gradient(180deg, var(--bg-dark) 0%, #163622 100%);
+    border-bottom:4px solid var(--accent);
+    padding:28px 16px;
+    text-align:center;
   }
-
-  header img {
-    height: 120px;  /* isompi logo */
-    margin-bottom: 0.5rem;
+  .logo{
+    width:128px;height:128px;margin:0 auto 8px;background-image:url(''); /* laita oma logo osoite tähän */
+    background-size:contain;background-repeat:no-repeat;background-position:center;
   }
-
-  nav {
-    background-color: #1a2c1a;
-    padding: 0.75rem 0;
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
+  header h1{margin:6px 0 0;color:var(--accent);font-weight:700;font-size:2rem;letter-spacing:0.02em}
+  nav{display:flex;justify-content:center;gap:28px;padding:12px 0;background:transparent}
+  nav a{color:var(--accent);text-decoration:none;padding:8px 12px;border-radius:6px;transition:all .15s ease}
+  nav a:hover{background:rgba(143,201,106,0.06);box-shadow:inset 0 0 12px rgba(0,0,0,.6)}
+  main{max-width:1100px;margin:36px auto;padding:40px 28px;background:transparent}
+  .card{
+    background:linear-gradient(180deg, rgba(24,50,31,0.9), rgba(16,40,24,0.85));
+    border-radius:12px;padding:28px;border:1px solid rgba(143,201,106,0.06);
+    box-shadow:var(--shadow);margin-bottom:22px;
   }
-
-  nav a {
-    color: #a6d785;
-    text-decoration: none;
-    font-weight: 600;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+  .center{text-align:center}
+  h2{color:var(--accent);margin:6px 0 10px}
+  p.lead{color:#cfeec0;margin:0 0 22px}
+  .links{display:flex;justify-content:center;gap:18px;margin-top:18px}
+  .btn{
+    display:inline-block;padding:18px 36px;border-radius:12px;background:var(--card);color:var(--accent);
+    text-decoration:none;font-weight:600;box-shadow:0 8px 20px rgba(0,0,0,.6);border:1px solid rgba(143,201,106,0.04)
   }
-
-  nav a:hover {
-    background-color: #a6d785;
-    color: #121212;
+  .servers-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:18px}
+  .server{
+    background:rgba(0,0,0,0.25);padding:16px;border-radius:10px;border:1px solid rgba(143,201,106,0.04);
+    display:flex;flex-direction:column;gap:8px;min-height:120px;
   }
-
-  main {
-    flex-grow: 1;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  .server h3{margin:0;color:var(--accent-dark)}
+  .meta{font-size:0.9rem;color:#cfeec0}
+  .status{margin-top:auto;font-weight:700;padding:8px 12px;border-radius:8px;display:inline-block}
+  .online{background:linear-gradient(90deg,#1b5d2b,#3ba14a);color:#072109}
+  .offline{background:linear-gradient(90deg,#3a2a2a,#222);color:#8a8a8a}
+  footer{border-top:4px solid var(--accent);padding:14px 0;text-align:center;margin-top:36px;background:var(--bg-dark);color:var(--accent);position:relative}
+  .small{font-size:0.9rem;color:#bfe7a8}
+  .muted{color:#9fbf95;font-size:0.95rem}
+  .help-note{margin-top:10px;font-size:0.95rem;color:#cfeec0}
+  /* responsive */
+  @media (max-width:640px){
+    header h1{font-size:1.4rem}
+    .btn{padding:12px 18px}
+    .logo{width:88px;height:88px}
   }
-
-  .link-boxes {
-    display: flex;
-    gap: 1.5rem;
-    margin-top: 2rem;
-  }
-
-  .link-box {
-    background-color: #223322;
-    border-radius: 8px;
-    padding: 1.5rem 2rem;
-    box-shadow: 0 2px 8px rgba(166, 215, 133, 0.25);
-    min-width: 180px;
-    text-align: center;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-
-  .link-box:hover {
-    background-color: #a6d785;
-    color: #121212;
-    cursor: pointer;
-    transform: scale(1.05);
-  }
-
-  .link-box a {
-    color: inherit;
-    font-weight: 600;
-    font-size: 1rem;
-    text-decoration: none;
-    display: block;
-  }
-
-  footer {
-    text-align: center;
-    padding: 1rem 2rem;
-    background-color: #1f341f;
-    color: #a6d785;
-    border-top: 3px solid #a6d785;
-  }
-
 </style>
 </head>
 <body>
-  <header>
-    <img src="images/fallencraftlogo.png" alt="Palvelimen logo" />
-    <h1>Minecraft & Discord Palvelin</h1>
-  </header>
-
-  <nav>
+<header>
+  <div class="logo" aria-hidden="true">
+    <!-- Jos haluat logon, laita <img src="polku/logo.png" alt="FallenCraft logo"> -->
+  </div>
+  <h1>Minecraft & Discord Palvelin</h1>
+  <nav aria-label="Päävalikko">
     <a href="index.html">Pääsivu</a>
-    <a href="rules.html">Säännöt</a>
-    <a href="staff.html">Ylläpitäjät</a>
+    <a href="saannot.html">Säännöt</a>
+    <a href="yllapito.html">Ylläpitäjät</a>
     <a href="discord.html">Discord</a>
   </nav>
+</header>
 
-  <main>
-    <h2>Tervetuloa!</h2>
-    <p>Valitse alta mihin haluat siirtyä:</p>
+<main>
+  <section class="card center" id="intro">
+    <h2>Tervetuloa FallenCraftiin!</h2>
+    <p class="lead">FallenCraft on yhteisö, jossa pelataan Minecraftia ja jutellaan Discordissa. Täältä löydät palvelimet, säännöt ja ylläpidon tiedot. Liity <a href="discord.html" class="muted">Discordiin</a> tai selaa palvelinlistaa alta.</p>
 
-    <div class="link-boxes">
-      <div class="link-box"><a href="rules.html">Säännöt</a></div>
-      <div class="link-box"><a href="staff.html">Ylläpitäjät</a></div>
-      <div class="link-box"><a href="https://discord.gg/oma-linkki" target="_blank" rel="noopener">Discord</a></div>
+    <div class="links">
+      <a class="btn" href="saannot.html">Säännöt</a>
+      <a class="btn" href="yllapito.html">Ylläpitäjät</a>
+      <a class="btn" href="discord.html">Discord</a>
     </div>
-  </main>
+  </section>
 
-  <footer>
-    &copy; 2025 Minecraft & Discord Palvelin
-  </footer>
+  <section class="card" id="servers">
+    <h2>Ajankohtaiset Minecraft-palvelimet</h2>
+    <p class="muted">Täältä näet käytössämme olevat palvelimet ja niiden tilan. Lisäksi ohje miten pyytää ylläpitoa käynnistämään palvelin.</p>
+
+    <div class="servers-grid" id="serversGrid">
+      <!-- Serverit generoidaan JS:llä -->
+      <!-- Esimerkki-palvelin näkyy, jos JS ei ole päällä -->
+      <div class="server">
+        <h3>esimerkki.fallen.fi</h3>
+        <div class="meta">Mode: Survival • Portti: 25565</div>
+        <div class="meta">Players: —</div>
+        <div class="status offline">Tarkistetaan...</div>
+      </div>
+    </div>
+
+    <p class="help-note">Tarvitsetko ylläpitoa käynnistämään palvelimen? Avaa tukipyyntö Discordin <strong>#apulipuke</strong>-kanavalla ja kerro:
+      palvelimen nimi &nbsp;•&nbsp; miksi haluat sen käynnistettävän &nbsp;•&nbsp; kuinka nopeasti. Ylläpito voi tarvittaessa avata palvelimen, jos pyyntö hyväksytään.</p>
+  </section>
+
+  <section class="card" id="howto">
+    <h2>Miten tracker toimii</h2>
+    <p class="muted">Palvelintilan tarkistus hakee tiedot suoraan julkisesta Minecraft-serveri-API:sta. Jos palvelin on offline tai API ei vastaa, näyttää tämä sivu sen offline-tilana. Voit päivittää tilan manuaalisesti painamalla sivun uudelleenlatausta.</p>
+  </section>
+</main>
+
+<footer>
+  <div>© 2025 FallenCraft — Minecraft & Discord Palvelin</div>
+</footer>
+
+<script>
+/*
+  Muokkaa tätä taulukkoa lisätäksesi/poistaaksesi palvelimia.
+  Käytä muotoa: { name: "Nimi näyttöön", host: "example.com", port: 25565, note: "vapaa teksti" }
+*/
+const SERVER_LIST = [
+  { name: "Fallen Survival", host: "play.fallen.example", port: 25565, note: "Survival, PVP rajoitettu" },
+  { name: "Fallen Creative", host: "creative.fallen.example", port: 25566, note: "Creative, rakennus" },
+  { name: "Fallen Minigames", host: "minigames.fallen.example", port: 25567, note: "Minipelejä" }
+];
+
+// API: https://api.mcsrvstat.us/2/{host}:{port}
+// Esim. https://api.mcsrvstat.us/2/play.example.com:25565
+
+function makeServerCard(srv){
+  const wrap = document.createElement('div');
+  wrap.className = 'server';
+  wrap.innerHTML = `
+    <h3>${escapeHtml(srv.name)}</h3>
+    <div class="meta">${escapeHtml(srv.host)}:${srv.port} • ${escapeHtml(srv.note || '')}</div>
+    <div class="meta players">Pelaajat: <span class="playersCount">-</span></div>
+    <div class="status statusTag offline">Tarkistetaan...</div>
+  `;
+  return wrap;
+}
+
+function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c])); }
+
+async function checkServer(srv, card){
+  const statusTag = card.querySelector('.statusTag');
+  const playersEl = card.querySelector('.playersCount');
+  const apiURL = `https://api.mcsrvstat.us/2/${encodeURIComponent(srv.host)}:${encodeURIComponent(srv.port)}`;
+
+  try{
+    // Asetetaan väliaikainen teksti
+    statusTag.textContent = 'Tarkistetaan...';
+    statusTag.classList.remove('online','offline');
+
+    const res = await fetch(apiURL, {cache: "no-store"});
+    if(!res.ok) throw new Error('API error');
+
+    const data = await res.json();
+    if(data && data.online){
+      statusTag.textContent = 'ONLINE';
+      statusTag.classList.remove('offline'); statusTag.classList.add('online');
+      // pelaajat ja max
+      const players = data.players && (data.players.online ?? data.players) ? (data.players.online ?? data.players) : 0;
+      const max = data.players && data.players.max ? data.players.max : (data.players ? data.players : '-');
+      playersEl.textContent = `${players} / ${max}`;
+    } else {
+      statusTag.textContent = 'OFFLINE';
+      statusTag.classList.remove('online'); statusTag.classList.add('offline');
+      playersEl.textContent = '-';
+    }
+  } catch (err){
+    statusTag.textContent = 'OFFLINE';
+    statusTag.classList.remove('online'); statusTag.classList.add('offline');
+    playersEl.textContent = '-';
+    // console.warn('Server check failed for', srv.host, err);
+  }
+}
+
+function renderServers(){
+  const container = document.getElementById('serversGrid');
+  container.innerHTML = '';
+  SERVER_LIST.forEach(srv=>{
+    const card = makeServerCard(srv);
+    container.appendChild(card);
+    // käynnistä tarkistus
+    checkServer(srv, card);
+  });
+}
+
+// mahdollisuus periodiseen päivitykseen:
+const REFRESH_INTERVAL_MS = 60 * 1000; // 60s
+renderServers();
+setInterval(renderServers, REFRESH_INTERVAL_MS);
+</script>
 </body>
 </html>
