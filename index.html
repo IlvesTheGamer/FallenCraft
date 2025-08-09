@@ -22,55 +22,152 @@
     padding:28px 16px;
     text-align:center;
   }
-  <img src="polku/fallencraftlogo.png" alt="FallenCraft">
-    width:128px;height:128px;margin:0 auto 8px;background-image:url('fallencraftlogo.png'); /* laita oma logo osoite tähän */
-    background-size:contain;background-repeat:no-repeat;background-position:center;
-  
-  header h1{margin:6px 0 0;color:var(--accent);font-weight:700;font-size:2rem;letter-spacing:0.02em}
-  nav{display:flex;justify-content:center;gap:28px;padding:12px 0;background:transparent}
-  nav a{color:var(--accent);text-decoration:none;padding:8px 12px;border-radius:6px;transition:all .15s ease}
-  nav a:hover{background:rgba(143,201,106,0.06);box-shadow:inset 0 0 12px rgba(0,0,0,.6)}
-  main{max-width:1100px;margin:36px auto;padding:40px 28px;background:transparent}
+  .logo {
+    width:128px;
+    height:128px;
+    margin:0 auto 8px;
+    background-image:url('fallencraftlogo.png'); /* laita oma logo osoite tähän */
+    background-size:contain;
+    background-repeat:no-repeat;
+    background-position:center;
+  }
+  header h1{
+    margin:6px 0 0;
+    color:var(--accent);
+    font-weight:700;
+    font-size:2rem;
+    letter-spacing:0.02em;
+  }
+  nav{
+    display:flex;
+    justify-content:center;
+    gap:28px;
+    padding:12px 0;
+    background:transparent;
+  }
+  nav a{
+    color:var(--accent);
+    text-decoration:none;
+    padding:8px 12px;
+    border-radius:6px;
+    transition:all .15s ease;
+  }
+  nav a:hover{
+    background:rgba(143,201,106,0.06);
+    box-shadow:inset 0 0 12px rgba(0,0,0,.6);
+  }
+  main{
+    max-width:1100px;
+    margin:36px auto;
+    padding:40px 28px;
+    background:transparent;
+  }
   .card{
     background:linear-gradient(180deg, rgba(24,50,31,0.9), rgba(16,40,24,0.85));
-    border-radius:12px;padding:28px;border:1px solid rgba(143,201,106,0.06);
-    box-shadow:var(--shadow);margin-bottom:22px;
+    border-radius:12px;
+    padding:28px;
+    border:1px solid rgba(143,201,106,0.06);
+    box-shadow:var(--shadow);
+    margin-bottom:22px;
   }
   .center{text-align:center}
-  h2{color:var(--accent);margin:6px 0 10px}
-  p.lead{color:#cfeec0;margin:0 0 22px}
-  .links{display:flex;justify-content:center;gap:18px;margin-top:18px}
+  h2{
+    color:var(--accent);
+    margin:6px 0 10px;
+  }
+  p.lead{
+    color:#cfeec0;
+    margin:0 0 22px;
+  }
+  .links{
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    margin-top:18px;
+  }
   .btn{
-    display:inline-block;padding:18px 36px;border-radius:12px;background:var(--card);color:var(--accent);
-    text-decoration:none;font-weight:600;box-shadow:0 8px 20px rgba(0,0,0,.6);border:1px solid rgba(143,201,106,0.04)
+    display:inline-block;
+    padding:18px 36px;
+    border-radius:12px;
+    background:var(--card);
+    color:var(--accent);
+    text-decoration:none;
+    font-weight:600;
+    box-shadow:0 8px 20px rgba(0,0,0,.6);
+    border:1px solid rgba(143,201,106,0.04);
   }
-  .servers-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:18px}
+  .servers-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:18px;
+    margin-top:18px;
+  }
   .server{
-    background:rgba(0,0,0,0.25);padding:16px;border-radius:10px;border:1px solid rgba(143,201,106,0.04);
-    display:flex;flex-direction:column;gap:8px;min-height:120px;
+    background:rgba(0,0,0,0.25);
+    padding:16px;
+    border-radius:10px;
+    border:1px solid rgba(143,201,106,0.04);
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    min-height:120px;
   }
-  .server h3{margin:0;color:var(--accent-dark)}
-  .meta{font-size:0.9rem;color:#cfeec0}
-  .status{margin-top:auto;font-weight:700;padding:8px 12px;border-radius:8px;display:inline-block}
-  .online{background:linear-gradient(90deg,#1b5d2b,#3ba14a);color:#072109}
-  .offline{background:linear-gradient(90deg,#3a2a2a,#222);color:#8a8a8a}
-  footer{border-top:4px solid var(--accent);padding:14px 0;text-align:center;margin-top:36px;background:var(--bg-dark);color:var(--accent);position:relative}
-  .small{font-size:0.9rem;color:#bfe7a8}
-  .muted{color:#9fbf95;font-size:0.95rem}
-  .help-note{margin-top:10px;font-size:0.95rem;color:#cfeec0}
+  .server h3{
+    margin:0;
+    color:var(--accent-dark);
+  }
+  .meta{
+    font-size:0.9rem;
+    color:#cfeec0;
+  }
+  .status{
+    margin-top:auto;
+    font-weight:700;
+    padding:8px 12px;
+    border-radius:8px;
+    display:inline-block;
+  }
+  .online{
+    background:linear-gradient(90deg,#1b5d2b,#3ba14a);
+    color:#072109;
+  }
+  .offline{
+    background:linear-gradient(90deg,#3a2a2a,#222);
+    color:#8a8a8a;
+  }
+  footer{
+    border-top:4px solid var(--accent);
+    padding:14px 0;
+    text-align:center;
+    margin-top:36px;
+    background:var(--bg-dark);
+    color:var(--accent);
+    position:relative;
+  }
+  .small{
+    font-size:0.9rem;
+    color:#bfe7a8;
+  }
+  .muted{
+    color:#9fbf95;
+    font-size:0.95rem;
+  }
+  .help-note{
+    margin-top:10px;
+    font-size:0.95rem;
+    color:#cfeec0;
+  }
   /* responsive */
   @media (max-width:640px){
-    header h1{font-size:1.4rem}
-    .btn{padding:12px 18px}
-    .logo{width:88px;height:88px}
+    header h1{font-size:1.4rem;}
+    .btn{padding:12px 18px;}
+    .logo{width:88px;height:88px;}
   }
 </style>
 </head>
 <body>
 <header>
-  <div class="logo" aria-hidden="true">
-    <!-- Jos haluat logon, laita <img src="polku/logo.png" alt="FallenCraft logo"> -->
-  </div>
+  <div class="logo" aria-hidden="true"></div>
   <h1>Minecraft & Discord Palvelin</h1>
 </header>
 
@@ -92,11 +189,10 @@
 
     <div class="servers-grid" id="serversGrid">
       <!-- Serverit generoidaan JS:llä -->
-      <!-- Esimerkki-palvelin näkyy, jos JS ei ole päällä -->
       <div class="server">
         <h3>esimerkki.fallen.fi</h3>
         <div class="meta">Mode: Survival • Portti: 25565</div>
-        <div class="meta">Players: —</div>
+        <div class="meta">Pelaajat: —</div>
         <div class="status offline">Tarkistetaan...</div>
       </div>
     </div>
@@ -130,74 +226,81 @@ function makeServerCard(srv){
   wrap.className = 'server';
   wrap.innerHTML = `
     <h3>${escapeHtml(srv.name)}</h3>
-    <div class="meta">${escapeHtml(srv.host)}:${srv.port} • ${escapeHtml(srv.note || '')}</div>
+    <div class="meta">${escapeHtml(srv.host)}:${escapeHtml(srv.port)} • ${escapeHtml(srv.note || '')}</div>
     <div class="meta players">Pelaajat: <span class="playersCount">-</span></div>
     <div class="status statusTag offline">Tarkistetaan...</div>
   `;
   return wrap;
 }
 
-function escapeHtml(s){ 
-  return String(s).replace(/[&<>"']/g, c=>({ 
-    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' 
-  }[c])); 
+// Escape HTML safe text for insertion
+function escapeHtml(text){
+  return String(text).replace(/[&<>"']/g, function(m){
+    return {
+      '&':'&amp;',
+      '<':'&lt;',
+      '>':'&gt;',
+      '"':'&quot;',
+      "'":'&#39;'
+    }[m];
+  });
 }
 
-async function checkServer(srv, card){
-  const statusTag = card.querySelector('.statusTag');
-  const playersEl = card.querySelector('.playersCount');
-  const apiURL = `https://api.mcsrvstat.us/2/${encodeURIComponent(srv.host)}:${encodeURIComponent(srv.port)}`;
-
-  try{
-    statusTag.textContent = 'Tarkistetaan...';
-    statusTag.classList.remove('online','offline');
-
-    const res = await fetch(apiURL, {cache: "no-store"});
-    if(!res.ok) throw new Error('API error');
-
+async function fetchServerStatus(host, port){
+  try {
+    // API kutsu
+    const url = `https://api.mcsrvstat.us/2/${host}:${port}`;
+    const res = await fetch(url);
+    if(!res.ok) throw new Error('HTTP error ' + res.status);
     const data = await res.json();
-    if(data && data.online){
-      statusTag.textContent = 'ONLINE';
-      statusTag.classList.remove('offline'); statusTag.classList.add('online');
-      const players = data.players && (data.players.online ?? data.players) ? (data.players.online ?? data.players) : 0;
-      const max = data.players && data.players.max ? data.players.max : (data.players ? data.players : '-');
-      playersEl.textContent = `${players} / ${max}`;
-    } else {
-      statusTag.textContent = 'OFFLINE';
-      statusTag.classList.remove('online'); statusTag.classList.add('offline');
-      playersEl.textContent = '-';
-    }
-  } catch (err){
-    statusTag.textContent = 'OFFLINE';
-    statusTag.classList.remove('online'); statusTag.classList.add('offline');
-    playersEl.textContent = '-';
+    return data;
+  } catch(e) {
+    return null;
   }
 }
 
-async function renderServers(){
-  if(isRefreshing) return; // älä tee mitään jos edellinen päivitys kesken
+async function refreshServers(){
+  if(isRefreshing) return;
   isRefreshing = true;
 
   const container = document.getElementById('serversGrid');
-  container.innerHTML = '';
-  const checkPromises = [];
+  container.innerHTML = ''; // Tyhjennä aiemmat
 
-  SERVER_LIST.forEach(srv=>{
+  for(const srv of SERVER_LIST){
     const card = makeServerCard(srv);
     container.appendChild(card);
-    checkPromises.push(checkServer(srv, card));
-  });
 
-  // Odotetaan että kaikki pyynnöt valmistuvat
-  await Promise.allSettled(checkPromises);
+    // Haetaan tila
+    const statusDiv = card.querySelector('.statusTag');
+    const playersSpan = card.querySelector('.playersCount');
+
+    if(srv.note === "TULOSSAPIAN"){
+      // Jos palvelin on tulossa pian, näytetään aina offline-teksti
+      statusDiv.textContent = "Tulossa pian";
+      statusDiv.className = "status offline";
+      playersSpan.textContent = "—";
+      continue;
+    }
+
+    const data = await fetchServerStatus(srv.host, srv.port);
+
+    if(data && data.online){
+      statusDiv.textContent = "Online";
+      statusDiv.className = "status online";
+      playersSpan.textContent = `${data.players.online} / ${data.players.max}`;
+    } else {
+      statusDiv.textContent = "Offline";
+      statusDiv.className = "status offline";
+      playersSpan.textContent = "—";
+    }
+  }
+
   isRefreshing = false;
 }
 
-// Päivitetään kerran heti ja sitten automaattisesti 60s välein
-const REFRESH_INTERVAL_MS = 60 * 1000; 
-renderServers();
-setInterval(renderServers, REFRESH_INTERVAL_MS);
+// Automaattinen päivitys 5 minuutin välein
+refreshServers();
+setInterval(refreshServers, 5 * 60 * 1000);
 </script>
-
 </body>
 </html>
