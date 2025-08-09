@@ -2,8 +2,9 @@
 <html lang="fi">
 <head>
 <meta charset="UTF-8" />
-<title>Minecraft & Discord Palvelin</title>
+<title>Säännöt – Minecraft & Discord Palvelin</title>
 <style>
+  /* Sama CSS kuin index.html:ssä */
   @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
   body {
@@ -24,7 +25,7 @@
   }
 
   header img {
-    height: 120px;  /* isompi logo */
+    height: 120px;
     margin-bottom: 0.5rem;
   }
 
@@ -53,40 +54,8 @@
   main {
     flex-grow: 1;
     padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .link-boxes {
-    display: flex;
-    gap: 1.5rem;
-    margin-top: 2rem;
-  }
-
-  .link-box {
-    background-color: #223322;
-    border-radius: 8px;
-    padding: 1.5rem 2rem;
-    box-shadow: 0 2px 8px rgba(166, 215, 133, 0.25);
-    min-width: 180px;
-    text-align: center;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-
-  .link-box:hover {
-    background-color: #a6d785;
-    color: #121212;
-    cursor: pointer;
-    transform: scale(1.05);
-  }
-
-  .link-box a {
-    color: inherit;
-    font-weight: 600;
-    font-size: 1rem;
-    text-decoration: none;
-    display: block;
+    max-width: 900px;
+    margin: 0 auto;
   }
 
   footer {
@@ -95,6 +64,15 @@
     background-color: #1f341f;
     color: #a6d785;
     border-top: 3px solid #a6d785;
+  }
+
+  h1, h2 {
+    color: #a6d785;
+  }
+
+  ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
   }
 
 </style>
@@ -109,18 +87,18 @@
     <a href="index.html">Pääsivu</a>
     <a href="rules.html">Säännöt</a>
     <a href="staff.html">Ylläpitäjät</a>
-    <a href="discord.html">Discord</a>
+    <a href="https://discord.gg/rrr5ZZqaBk">Discord</a>
   </nav>
 
   <main>
-    <h2>Tervetuloa!</h2>
-    <p>Valitse alta mihin haluat siirtyä:</p>
-
-    <div class="link-boxes">
-      <div class="link-box"><a href="rules.html">Säännöt</a></div>
-      <div class="link-box"><a href="staff.html">Ylläpitäjät</a></div>
-      <div class="link-box"><a href="https://discord.gg/oma-linkki" target="_blank" rel="noopener">Discord</a></div>
-    </div>
+    <h2>FallenCraftin Discord</h2>
+    <ul>
+      <p>FallenCraftin Discord on vuodesta 2023 asti ollut Discord-palvelin, jossa</p>
+      <p>on yli 150 jäsentä. Discordissa pelataan porukallla monenlaisia pelejä, kuten</p>
+      <p>Minecraftia, Valoranttia, Robloxia, CS2 ja paljon muuta!</p>
+      <p>Tule pelaamaan meidän kanssa!</p>
+      <p><a href="https://discord.gg/rrr5ZZqaBk">Discord</a></p>
+    </ul>
   </main>
 
   <footer>
@@ -128,3 +106,4 @@
   </footer>
 </body>
 </html>
+
